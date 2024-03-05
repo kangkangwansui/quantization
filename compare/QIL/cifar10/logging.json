@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "formatters": {
+    "simple": {"format": "%(asctime)s - %(levelname)s - %(message)s"}
+  },
+
+  "handlers": {
+    "console": {
+      "class": "logging.StreamHandler",
+      "level": "INFO",
+      "formatter": "simple",
+      "stream": "ext://sys.stdout"
+    },
+
+    "info_model_handler": {
+      "class": "logging.FileHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "filename": "loss_acc.log"
+      },
+
+    "info_param_handler": {
+      "class": "logging.FileHandler",
+      "level": "DEBUG",
+      "formatter": "simple",
+      "filename": "param.log"
+      }
+    },
+
+  "loggers": {
+    "model-logger": {
+      "level": "DEBUG",
+      "handlers": ["console", "info_model_handler"],
+      "propagate": true
+    },
+    "param-logger": {
+      "level": "DEBUG",
+      "handlers": ["console", "info_param_handler"],
+      "propagate": true
+    }
+  }
+}
